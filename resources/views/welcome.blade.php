@@ -916,7 +916,7 @@
             Your browser does not support the video tag.
         </video>
         <div class="content relative z-10 text-center">
-            <h1 class="text-white text-3xl md:text-6xl font-bold font">Welcome to GeeK GYM<br>
+            <h1 class="text-white text-3xl md:text-6xl font-bold font">Welcome to <span class="text-red-600"> S&A </span> GYM<br>
                 <div class="text-3xl font-bold shadow-lg text-red-600">GYM CLUB</div>
               </h1>
             <p class="pt-4 text-gray-300 font-extrabold">Confidence comes from discipline and training</p>

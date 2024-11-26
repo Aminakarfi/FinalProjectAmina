@@ -7,15 +7,17 @@
             <h1 class="text-red-600  font-bold text-2xl ">S&A GYM </h1>
         </div>
         <div class="flex gap-10">
-            <a href="">About Us</a>
-            <a href="">Pricing</a>
-            <a href="">Contact</a>
+            <a href="#about">About Us</a>
+            <a href="#sil">Trainers</a>
+            <a href="#contact">Contact</a>
             @if (Auth::user()->role == 'admin')
                 <a href="/admin">admin</a>
             @endif
         </div>
         <div>
-            <button class="bg-red-500 text-white p-2 rounded-lg">Join us</button>
+            <button class="bg-red-500 text-white p-2 rounded-lg">
+                <a href="#click">Join us</a>
+            </button>
         </div>
 
 
@@ -56,7 +58,7 @@
     </section>
 
 
-    <div class=" py-5 bg-red-700">
+    <div id="about" class=" py-5 bg-red-700">
 
     </div>
 
@@ -65,15 +67,14 @@
 
 
         <div class="">
-            <h1 class=" font-bold text-6xl text-red-500"> About Us</h1>
+            <h1  class=" font-bold text-6xl text-red-500"> About Us</h1>
             <br>
             <p class="text-black text-2xl ">
                 At GymHeroics, we're not just a gym, we're a community of fitness <br>enthusiasts on a mission to help
                 you become your own hero.<br> With a team of experienced trainers and a commitment to personalized <br>
                 fitness, we're here to support your journey to greatness. Join us and <br> be part of a fitness</p>
             <div class="flex gap-6 pt-4">
-                <button class="bg-red-500 p-3 rounded-lg font-bold text-white">Join us</button>
-                <button class="bg-red-500 p-3 rounded-lg font-bold text-white">Join us</button>
+                <svg class="w-11 text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M96 64c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32l0 160 0 64 0 160c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-64-32 0c-17.7 0-32-14.3-32-32l0-64c-17.7 0-32-14.3-32-32s14.3-32 32-32l0-64c0-17.7 14.3-32 32-32l32 0 0-64zm448 0l0 64 32 0c17.7 0 32 14.3 32 32l0 64c17.7 0 32 14.3 32 32s-14.3 32-32 32l0 64c0 17.7-14.3 32-32 32l-32 0 0 64c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-160 0-64 0-160c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32zM416 224l0 64-192 0 0-64 192 0z"/></svg>
             </div>
         </div>
 
@@ -105,7 +106,7 @@
         <div>
             <div class="flex gap-[70px]">
                 <h1 class="text-white font-bold text-5xl">S&A GYM </h1>
-                <a href="/exercice" class="text-lg bg-red-500 font-bold mb-4">Find Ur Exercises </a>
+                <a href="/exercice" class="text-lg bg-red-500 font-bold mb-4 p-3 rounded-lg">Find Ur Exercises </a>
 
 
             </div>
@@ -124,29 +125,27 @@
         <div class=" py-5 bg-red-700">
 
         </div>
-        <div class="bg-white py-12">
+        <div id="sil" class="bg-white py-12">
             <!-- Title Section -->
             <div class="text-center mb-8">
                 <h1 class="text-4xl font-extrabold text-red-600">OUR TRAINERS</h1>
                 <p class="text-xl text-black mt-4">
                     Explore our diverse fitness classes, from high-intensity workouts to relaxing yoga
-                    sessions, designed to cater to all levels and interests.
+                    sessions, designed to cater to all levels and interests. <br>Meet our professional trainers who will
+                    help you achieve your fitness goals.
+
                 </p>
+
                 <!-- Buttons -->
                 <div class="mt-6">
-                    <button
-                        class="bg-red-500 px-6 py-3 rounded-lg text-white font-bold shadow-lg hover:bg-red-600 transition">
-                        Book Session
-                    </button>
+
                     <button
                         class="bg-rose-500 px-6 py-3 ml-4 rounded-lg text-white font-bold shadow-lg hover:bg-rose-600 transition"
                         onclick="openModal('modelConfirm')">
                         Become a Trainer
                     </button>
                     @if (Auth::user()->role == 'trainer')
-                       
-                            <a href="/exercice">Create Exercice</a>
-                       
+                        <a href="/exercice">Create Exercice</a>
                     @endif
 
                 </div>
@@ -156,9 +155,7 @@
             <div class="bg-white py-12 px-4">
                 <!-- Title Section -->
                 <div class="text-center mb-10">
-                    <p class="text-lg text-black mt-4">
-                        Meet our professional trainers who will help you achieve your fitness goals.
-                    </p>
+
                 </div>
 
                 <!-- Trainers Section -->
@@ -172,7 +169,7 @@
                             <p class="text-sm text-gray-400">Personal Trainer</p>
                             <button
                                 class="mt-4 px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition">
-                                View Profile
+                                <a href="{{ route('exercice') }}"> View Plan</a>
                             </button>
                         </div>
                     </div>
@@ -186,7 +183,7 @@
                             <p class="text-sm text-gray-400">Yoga Expert</p>
                             <button
                                 class="mt-4 px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition">
-                                View Profile
+                                <a href="{{ route('exercice') }}"> View Plan</a>
                             </button>
                         </div>
                     </div>
@@ -200,7 +197,7 @@
                             <p class="text-sm text-gray-400">Strength Coach</p>
                             <button
                                 class="mt-4 px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600 transition">
-                                View Profile
+                                <a href="{{ route('exercice') }}"> View Plan</a>
                             </button>
                         </div>
                     </div>
@@ -226,24 +223,16 @@
                         </button>
                     </div>
                     <!-- Modal Body -->
-                    <div class="p-6 text-center">
-                        <h2 class="text-2xl font-bold text-gray-800">Become a Trainer</h2>
 
-                        <form action="{{ route('coach.store') }}" method="post" class="mt-6">
-                            @csrf
-                            <div class="space-y-4">
-                                <input type="text" name="name" placeholder="Full Name"
-                                    class="w-full border rounded-md p-3 text-gray-700 focus:outline-none focus:ring focus:ring-red-500">
-                                <input type="text" name="phone" placeholder="Phone Number"
-                                    class="w-full border rounded-md p-3 text-gray-700 focus:outline-none focus:ring focus:ring-red-500">
-                                <input type="email" name="email" placeholder="Email Address"
-                                    class="w-full border rounded-md p-3 text-gray-700 focus:outline-none focus:ring focus:ring-red-500">
-                            </div>
-                            <button type="submit"
-                                class="w-full mt-4 bg-red-500 text-white py-3 rounded-md hover:bg-red-600 focus:outline-none">
-                                Submit
-                            </button>
-                        </form>
+                    <div class="p-10 text-center flex flex-col  justify-center items-center">
+                        <div class="bg-green-500 p-2 rounded-full">
+                            <svg class="w-6" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                <path
+                                    d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
+                            </svg>
+                        </div>
+                        <h1 class="text-green-600 text-2xl"> Your request has been submitted successfully</h1>
                     </div>
                 </div>
             </div>
@@ -283,8 +272,10 @@
 
 
 
-        <div class="container mx-auto px-4 py-16">
-            <h2 class="text-5xl font-bold text-center mb-12">Choose Your Plan</h2>
+        <div class="container mx-auto px-4 py-16" id="click">
+            <h2 class="text-5xl font-bold text-center mb-12">
+                Choose Plan
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-slate-950 text-white p-8 rounded-lg shadow-md">
                     <h3 class="text-xl font-bold mb-4">Basic</h3>
@@ -323,8 +314,10 @@
                             Locker Room Access
                         </li>
                     </ul>
-                    <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Choose
-                        Plan</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                        <a href="/checkout"> Choose Plan
+                        </a>
+                    </button>
                 </div>
 
                 <div class="bg-red-600 text-white p-8 rounded-lg shadow-md">
@@ -364,13 +357,14 @@
                             Monthly Fitness Assessment
                         </li>
                     </ul>
-                    <button class="bg-white hover:bg-gray-100 text-red-600 font-bold py-2 px-4 rounded-full">Choose
-                        Plan</button>
+                    <button class="bg-white hover:bg-gray-100 text-red-600 font-bold py-2 px-4 rounded-full">
+                        <a href="/checkout" class="text-black">Choose Plan</a>
+                    </button>
                 </div>
 
                 <div class="bg-slate-950 text-white p-8 rounded-lg shadow-md">
                     <h3 class="text-xl font-bold mb-4">Basic</h3>
-                    <p class="text-2xl font-bold mb-6">$99 <span class="text-sm">/Per Month</span></p>
+                    <p class="text-2xl font-bold mb-6">$399 <span class="text-sm">/Per Month</span></p>
                     <ul class="list-none mb-6">
                         <li class="flex items-center mb-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -435,7 +429,7 @@
 
 
 
-    <footer class="bg-black text-white py-12">
+    <footer id="contact" class="bg-black text-white py-12">
         <div class="container mx-auto px-4 md:px-16">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- About Section -->

@@ -21,17 +21,19 @@
                             <td class="py-3 px-4 text-gray-700">{{ $user->email }}</td>
                             <td class="py-3 px-4 text-gray-700">{{ $user->role }}</td>
                             <td class="py-3 px-4 text-gray-700">
-                                <form method="POST" action="{{ route('admin.update', $user->id) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <input value="{{ $user->id }}" name="user_id" type="hidden">
-                                    <button>give rule</button>
-                                </form>
-                                <form method="post" action="{{ route('admin.destroy', $user->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button px-3 py-1 bgred-500 rounded-lg>delete</button>
-                                </form>
+                                <div class="flex gap-2">
+                                    <form method="POST" action="{{ route('admin.update', $user->id) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <input value="{{ $user->id }}" name="user_id" type="hidden">
+                                        <button class="px-3 py-1 rounded-lg bg-green-500 text-white">give rule</button>
+                                    </form>
+                                    <form method="post" action="{{ route('admin.destroy', $user->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="px-3 py-1 rounded-lg bg-red-500 text-white"  >delete</button>
+                                    </form>
+                                </div>
                             </td>
 
                         </tr>

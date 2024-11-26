@@ -5,7 +5,7 @@
     <div class="container mx-auto py-8">
         <!-- Form to Create an Exercice -->
         <div class="bg-white shadow-md rounded-lg mb-8 p-6">
-            <h4 class="text-2xl font-bold text-red-600 mb-4">Create Exercice</h4>
+            <h4 class="text-4xl font-bold text-red-600 mb-4">OUR PLANS</h4>
             @if (Auth::user()->role == 'trainer')
                 <form action="{{ route('exercice.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                     @csrf
@@ -64,7 +64,7 @@
 
         <!-- List of Exercices -->
         <div class="bg-black text-white rounded-lg shadow-md p-6">
-            <h4 class="text-2xl font-bold text-red-600 mb-4">All Exercices</h4>
+            <h4 class="text-2xl font-bold  text-white mb-4">All Exercices</h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse($exercices as $exercice)
                     <!-- Exercice Card -->
@@ -83,6 +83,14 @@
                                 <p><span  class="font-semibold text-white">Start Time:</span> {{ $exercice->start_time }}
                                 </p>
                                 <p><span class="font-semibold text-white">End Time:</span> {{ $exercice->end_time }}</p>
+                                <form action="/exercice/destroy/{{ $exercice->id }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    @if (Auth::user()->role == 'trainer')
+                                        
+                                    <button class="bg-red-500 text-white p-2 rounded-lg">Delete</button>
+                                    @endif
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -93,7 +101,7 @@
             </div>
         </div>
     </div>
-    <div id="calendar">
+    <div id="calendar" class="bg-black text-white">
         <h1 class="text-center pt-4 text-2xl font-bold">Calender</h1>
     </div>
     <script>

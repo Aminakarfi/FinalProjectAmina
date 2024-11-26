@@ -103,5 +103,7 @@ class ExerciceController extends Controller
     public function destroy(Exercice $exercice)
     {
         //
+        $exercice->delete();
+        return back();
     }
 }

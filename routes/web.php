@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/exercice', [ExerciceController::class, 'index'])->name('exercice');
     Route::post('/exercice/store', [ExerciceController::class, 'store'])->name('exercice.store');
     Route::get('/exercice/create', [ExerciceController::class, 'create'])->name('exercice.create');
+    Route::delete("/exercice/destroy/{exercice}", [ExerciceController::class, "destroy"])->name("exercice.destroy");
 
 
 
