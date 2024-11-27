@@ -4,63 +4,78 @@
    
     <div class="container mx-auto py-8">
         <!-- Form to Create an Exercice -->
-        <div class="bg-white shadow-md rounded-lg mb-8 p-6">
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <button id="openModal" class=" text-3xl font-bold bg-red-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-red-700 transition">
+        Create Exercise
+    </button>
+
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md relative">
             <h4 class="text-4xl font-bold text-red-600 mb-4">OUR PLANS</h4>
-            @if (Auth::user()->role == 'trainer')
-                <form action="{{ route('exercice.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
-                    @csrf
+            <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <form action="/exercice/store" method="POST" enctype="multipart/form-data" class="space-y-4">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <!-- Exercice Name -->
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Exercice Name</label>
-                        <input type="text" name="name" id="name"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                            placeholder="Enter exercice name" required>
-                    </div>
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Exercise Name</label>
+                    <input type="text" name="name" id="name"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        placeholder="Enter exercise name" required>
+                </div>
 
-                    <!-- Exercice Image -->
-                    <div>
-                        <label for="image" class="block text-sm font-medium text-gray-700">Exercice Image</label>
-                        <input type="file" name="image" id="image"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                            accept="image/*" required>
-                    </div>
+                <div>
+                    <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Exercise Image</label>
+                    <input type="file" name="image" id="image"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        accept="image/*" required>
+                </div>
 
-                    <!-- Exercice Description -->
-                    <div>
-                        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                        <textarea name="description" id="description"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                            rows="3" placeholder="Enter exercice description" required></textarea>
-                    </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea name="description" id="description"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        rows="3" placeholder="Enter exercise description" required></textarea>
+                </div>
 
-                    <!-- Start Time -->
-                    <div>
-                        <label for="start_time" class="block text-sm font-medium text-gray-700">Start Time</label>
-                        <input id="start" type="datetime-local" name="start_time" 
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                            required>
-                    </div>
+                <div>
+                    <label for="start_time" class="block text-sm font-medium text-gray-700">Start Time</label>
+                    <input id="start" type="datetime-local" name="start_time" 
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        required>
+                </div>
 
-                    <!-- End Time -->
-                    <div>
-                        <label for="end_time" class="block text-sm font-medium text-gray-700">End Time</label>
-                        <input id="end" type="datetime-local" name="end_time"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                            required>
-                    </div>
+                <div>
+                    <label for="end_time" class="block text-sm font-medium text-gray-700">End Time</label>
+                    <input id="end" type="datetime-local" name="end_time"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
+                        required>
+                </div>
 
-                    <!-- Submit Button -->
-                    <div>
-                        <button type="submit"
-                            class="w-full bg-red-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-red-700 transition">
-                            Create Exercice
-                        </button>
-                    </div>
-                </form>
-            @endif
-
+                <div>
+                    <button type="submit"
+                        class="w-full bg-red-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-red-700 transition">
+                        Create Exercise
+                    </button>
+                </div>
+            </form>
         </div>
+    </div>
+
+    
+</body>
+</html>
 
         <!-- List of Exercices -->
         <div class="bg-black text-white rounded-lg shadow-md p-6">
@@ -201,4 +216,23 @@
             calendar.render();
         })
       </script>
+      <script>
+        const modal = document.getElementById('modal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
 </x-app-layout>
